@@ -14,12 +14,22 @@
          <script>
          	function calc(){
          		var cunkuanjine = document.getElementById("amount").value;
+         		var regex = /^[0-9]{2,6}$/;
+         		if (!regex.test(cunkuanjine)) {
+         			document.getElementById("amount").value="输入不合法!必须是2-6位数字！";
+         			document.getElementById("amount").style="color:red";
+         			return;
+         		}
          		var cunkuannum = parseInt(cunkuanjine);
          		var lilv = document.getElementById("year").value;
          		var lixi = cunkuannum * lilv;
          		var total = cunkuannum + lixi;
                 document.getElementById("lixi").value=lixi;
                 document.getElementById("total").value=total;
+         	}
+         	function clearcontent(){
+         		document.getElementById("amount").value='';
+         		document.getElementById("amount").style="color:black"
          	}
          </script>
 	</head>
@@ -33,7 +43,7 @@
 				<tr>
 					<td>存款金额</td>
 					<td>
-						<input class="form-control" type="text" placeholder="请输入存款金额" id="amount"/>
+						<input onfocus="clearcontent()" class="form-control" type="text" placeholder="请输入存款金额" id="amount"/>
 					</td>
 				</tr>
 				<tr>
@@ -41,9 +51,9 @@
 					<td>
 						<select id="year" class="form-control">
 							<option value="0.0175">一年(1.75%)</option>
-							<option value="0.0225">二年(2.25%)</option>
-							<option value="0.0275">三年(2.75%)</option>
-							<option value="0.0275">五年(2.75%)</option>
+							<option value="0.045">二年(2.25%)</option>
+							<option value="0.0825">三年(2.75%)</option>
+							<option value="0.1375">五年(2.75%)</option>
 						</select>
 					</td>
 				</tr>
@@ -65,7 +75,7 @@
 					 </td>
 				</tr>
 			</table> 
-			  开发人员：2013041422 白太玉 中北大学软件学院2020级
+			  开发人员：2013041422 白太玉      &nbsp;执行单位：中北大学软件学院2020级
 		</div>
 	</body>
 </html>
